@@ -1,6 +1,6 @@
 :root {
-    --orbit-sun-radius: 270px;
-    --orbit-moon-radius: 220px;
+    --orbit-sun-radius: 250px;
+    --orbit-moon-radius: 210px;
     --sun-radius: 48px;
     --moon-radius: 24px;
 }
@@ -46,7 +46,7 @@
         }
 
         &.circle-sun-down {
-            border: 1px solid #616372;
+            border: 1px solid #d1d2d9;
         }
     }
 
@@ -61,7 +61,7 @@
         }
 
         &.circle-moon-down {
-            border: 1px solid #616372;
+            border: 1px solid #b6b7c0;
         }
     }
 }
@@ -128,7 +128,7 @@ a:hover {
 }
 
 .content {
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.9);
     padding: 2rem 3rem;
     border-radius: 1rem;
     box-shadow: 0 5px 24px rgb(0, 0, 0);
@@ -168,7 +168,7 @@ a:hover {
     }
 
     .content {
-        background: rgb(52, 55, 58);
+        background: rgba(52, 55, 58, 0.9);
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
     }
 
