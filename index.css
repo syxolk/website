@@ -1,6 +1,7 @@
 :root {
     --orbit-radius: 500px;
-    --planet-radius: 32px;
+    --sun-radius: 48px;
+    --moon-radius: 24px;
 }
 
 /* Rotating orbiting circle */
@@ -10,7 +11,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 10;
+    z-index: -1;
 }
 
 .orbit-container-up {
@@ -18,7 +19,7 @@
 }
 
 .orbit-container-down {
-    clip-path: inset(50% 0 0 0);
+    clip-path: inset(50% -50px -50px -50px);
 }
 
 .orbit {
@@ -29,8 +30,6 @@
 }
 
 .circle {
-    width: var(--planet-radius);
-    height: var(--planet-radius);
     border-radius: 50%;
     position: absolute;
     left: 50%;
@@ -38,20 +37,24 @@
 }
 
 .circle-sun {
+    width: var(--sun-radius);
+    height: var(--sun-radius);
     top: 0;
 }
 
 .circle-moon {
+    width: var(--moon-radius);
+    height: var(--moon-radius);
     bottom: 0;
 }
 
 .circle-sun-up {
-    background: rgb(243, 242, 147);
-    box-shadow: 0 0 50px rgba(233, 238, 214, 1);
+    background: rgb(244, 230, 45);
+    box-shadow: 0 0 50px rgb(244, 230, 45);
 }
 
 .circle-sun-down {
-    background: #474852;
+    border: 1px solid #616372;
 }
 
 .circle-moon-up {
@@ -60,7 +63,7 @@
 }
 
 .circle-moon-down {
-    background: #2c2c2c;
+    border: 1px solid #616372;
 }
 
 @keyframes orbit-rotate {
@@ -115,10 +118,10 @@ a:hover {
 }
 
 .content {
-    background: rgba(255, 255, 255);
+    background: rgb(255, 255, 255);
     padding: 2rem 3rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 24px rgb(0, 0, 0);
     text-align: center;
     max-width: 600px;
     grid-area: main;
@@ -144,7 +147,7 @@ a:hover {
     }
 
     .content {
-        background: rgba(52, 55, 58, 0.95);
+        background: rgb(52, 55, 58);
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
     }
 
