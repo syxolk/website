@@ -1,32 +1,46 @@
 :root {
-    --orbit-radius: 500px;
+    --orbit-sun-radius: 700px;
+    --orbit-moon-radius: 500px;
     --sun-radius: 48px;
     --moon-radius: 24px;
 }
 
 /* Rotating orbiting circle */
 .orbit-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     z-index: -1;
-}
 
-.orbit-container-up {
-    clip-path: inset(-50px -50px 50% -50px);
-}
+    &.orbit-container-up {
+        clip-path: inset(0 0 50% 0);
+    }
 
-.orbit-container-down {
-    clip-path: inset(50% -50px -50px -50px);
+    &.orbit-container-down {
+        clip-path: inset(50% 0 0 0);
+    }
 }
 
 .orbit {
-    width: var(--orbit-radius);
-    height: var(--orbit-radius);
-    position: relative;
-    animation: orbit-rotate 60s linear infinite;
+    position: absolute;
+
+    &.orbit-sun {
+        width: var(--orbit-sun-radius);
+        height: var(--orbit-sun-radius);
+        top: calc(50% - var(--orbit-sun-radius) / 2);
+        left: calc(50% - var(--orbit-sun-radius) / 2);
+        animation: orbit-rotate 60s linear infinite;
+    }
+
+    &.orbit-moon {
+        width: var(--orbit-moon-radius);
+        height: var(--orbit-moon-radius);
+        top: calc(50% - var(--orbit-moon-radius) / 2);
+        left: calc(50% - var(--orbit-moon-radius) / 2);
+        animation: orbit-rotate 20s linear infinite;
+    }
 }
 
 .circle {
@@ -34,45 +48,45 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-}
 
-.circle-sun {
-    width: var(--sun-radius);
-    height: var(--sun-radius);
-    top: 0;
-}
+    &.circle-sun {
+        width: var(--sun-radius);
+        height: var(--sun-radius);
+        top: 0;
 
-.circle-moon {
-    width: var(--moon-radius);
-    height: var(--moon-radius);
-    bottom: 0;
-}
+        &.circle-sun-up {
+            background: rgb(244, 230, 45);
+            box-shadow: 0 0 50px rgb(244, 230, 45);
+        }
 
-.circle-sun-up {
-    background: rgb(244, 230, 45);
-    box-shadow: 0 0 50px rgb(244, 230, 45);
-}
+        &.circle-sun-down {
+            border: 1px solid #616372;
+        }
+    }
 
-.circle-sun-down {
-    border: 1px solid #616372;
-}
+    &.circle-moon {
+        width: var(--moon-radius);
+        height: var(--moon-radius);
+        bottom: 0;
 
-.circle-moon-up {
-    background: #f3f3f3;
-    box-shadow: 0 0 30px rgba(252, 252, 252, 0.7);
-}
+        &.circle-moon-up {
+            background: #f3f3f3;
+            box-shadow: 0 0 30px rgba(252, 252, 252, 0.7);
+        }
 
-.circle-moon-down {
-    border: 1px solid #616372;
+        &.circle-moon-down {
+            border: 1px solid #616372;
+        }
+    }
 }
 
 @keyframes orbit-rotate {
     0% {
-        transform: rotate(-90deg);
+        transform: rotate(0deg);
     }
 
     100% {
-        transform: rotate(270deg);
+        transform: rotate(360deg);
     }
 }
 
