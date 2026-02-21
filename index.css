@@ -1,9 +1,84 @@
+:root {
+    --orbit-radius: 500px;
+    --planet-radius: 32px;
+}
+
+/* Rotating orbiting circle */
+.orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.orbit-container-up {
+    clip-path: inset(-50px -50px 50% -50px);
+}
+
+.orbit-container-down {
+    clip-path: inset(50% 0 0 0);
+}
+
+.orbit {
+    width: var(--orbit-radius);
+    height: var(--orbit-radius);
+    position: relative;
+    animation: orbit-rotate 60s linear infinite;
+}
+
+.circle {
+    width: var(--planet-radius);
+    height: var(--planet-radius);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.circle-sun {
+    top: 0;
+}
+
+.circle-moon {
+    bottom: 0;
+}
+
+.circle-sun-up {
+    background: rgb(243, 242, 147);
+    box-shadow: 0 0 50px rgba(233, 238, 214, 1);
+}
+
+.circle-sun-down {
+    background: #474852;
+}
+
+.circle-moon-up {
+    background: #f3f3f3;
+    box-shadow: 0 0 30px rgba(252, 252, 252, 0.7);
+}
+
+.circle-moon-down {
+    background: #2c2c2c;
+}
+
+@keyframes orbit-rotate {
+    0% {
+        transform: rotate(-90deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
 body {
     min-height: 100vh;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    grid-template-areas: "main";
     color: #332a2a;
     font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
@@ -46,8 +121,14 @@ a:hover {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
     text-align: center;
     max-width: 600px;
+    grid-area: main;
 
     animation: fadeInAnimation 0.5s linear;
+}
+
+.horizon {
+    grid-area: main;
+    width: 100%;
 }
 
 .links {
