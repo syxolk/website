@@ -1,6 +1,6 @@
 :root {
-    --orbit-sun-radius: 700px;
-    --orbit-moon-radius: 500px;
+    --orbit-sun-radius: 270px;
+    --orbit-moon-radius: 220px;
     --sun-radius: 48px;
     --moon-radius: 24px;
 }
@@ -29,36 +29,16 @@
     }
 }
 
-.orbit {
-    position: absolute;
-
-    &.orbit-sun {
-        width: var(--orbit-sun-radius);
-        height: var(--orbit-sun-radius);
-        top: calc(50% - var(--orbit-sun-radius) / 2);
-        left: calc(50% - var(--orbit-sun-radius) / 2);
-        animation: orbit-rotate 60s linear infinite;
-    }
-
-    &.orbit-moon {
-        width: var(--orbit-moon-radius);
-        height: var(--orbit-moon-radius);
-        top: calc(50% - var(--orbit-moon-radius) / 2);
-        left: calc(50% - var(--orbit-moon-radius) / 2);
-        animation: orbit-rotate 20s linear infinite;
-    }
-}
-
 .circle {
     border-radius: 50%;
     position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
 
     &.circle-sun {
+        animation: orbitSun 30s linear infinite;
         width: var(--sun-radius);
         height: var(--sun-radius);
-        top: 0;
 
         &.circle-sun-up {
             background: rgb(244, 230, 45);
@@ -71,9 +51,9 @@
     }
 
     &.circle-moon {
+        animation: orbitMoon 15s linear infinite;
         width: var(--moon-radius);
         height: var(--moon-radius);
-        bottom: 0;
 
         &.circle-moon-up {
             background: #f3f3f3;
@@ -86,13 +66,23 @@
     }
 }
 
-@keyframes orbit-rotate {
+@keyframes orbitSun {
     0% {
-        transform: rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg) translate(0, var(--orbit-sun-radius));
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg) translate(0, var(--orbit-sun-radius));
+    }
+}
+
+@keyframes orbitMoon {
+    0% {
+        transform: translate(-50%, -50%) rotate(-180deg) translate(0, var(--orbit-moon-radius));
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(180deg) translate(0, var(--orbit-moon-radius));
     }
 }
 
