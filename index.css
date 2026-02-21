@@ -18,7 +18,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: -3;
 
     &.orbit-container-up {
         clip-path: inset(0 0 50% 0);
@@ -147,6 +147,12 @@ a:hover {
         margin: 0;
         padding: 0;
     }
+}
+
+.fractal-tree {
+    grid-area: main;
+    transform: translateY(-50%);
+    z-index: -2;
 }
 
 .links {
